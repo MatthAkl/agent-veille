@@ -1,1 +1,5 @@
-pip freeze | Out-File -Encoding utf8 requirements.txt
+langgraph
+langchain-google-genai
+feedparser
+python-dotenv
+requests
