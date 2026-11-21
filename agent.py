@@ -10,6 +10,7 @@ from langgraph.types import RetryPolicy
 
 from fetch_sources import recuperer_articles
 from envoi_mail import envoyer_mail
+from memoire import liens_deja_envoyes, enregistrer_envoi
 
 load_dotenv()
 
@@ -93,8 +94,18 @@ def collecter(etat: EtatVeille):
     return {"articles": articles}
 
 
+def filtrer(etat: EtatVeille):
+    """Nœud 2 : retire les articles déjà envoyés lors des veilles précédentes."""
+    deja_envoyes = liens_deja_envoyes()
+    nouveaux = [a for a in etat["articles"] if a["lien"] not in deja_envoyes]
+
+    retires = len(etat["articles"]) - len(nouveaux)
+    print(f"[filtrer] {retires} déjà envoyé(s), {len(nouveaux)} nouveau(x)")
+    return {"articles": nouveaux}
+
+
 def selectionner(etat: EtatVeille):
-    """Nœud 2 : garde les articles les plus utiles pour chaque domaine."""
+    """Nœud 3 : garde les articles les plus utiles pour chaque domaine."""
     selection = []
 
     for domaine, niveau in PROFIL.items():
@@ -143,7 +154,7 @@ Réponds uniquement avec les numéros séparés par une virgule, par exemple : 3
 
 
 def rediger(etat: EtatVeille):
-    """Nœud 3 : rédige le contenu du mail en français (HTML structuré)."""
+    """Nœud 4 : rédige le contenu du mail en français (HTML structuré)."""
     print("[rediger] rédaction du mail par Gemini...")
 
     blocs = []
@@ -203,7 +214,7 @@ Contenu :
 
 
 def envoyer(etat: EtatVeille):
-    """Nœud 4 : met en page le mail, garde une copie locale et l'envoie."""
+    """Nœud 5 : met en page le mail, garde une copie locale et l'envoie."""
     page = construire_page(etat["mail_html"], len(etat["selection"]))
 
     # Copie locale pour pouvoir relire le mail
@@ -213,6 +224,12 @@ def envoyer(etat: EtatVeille):
     date = datetime.now().strftime("%d/%m/%Y")
     envoyer_mail(f"Ta veille tech du {date}", page)
 
+    return {}
+
+
+def memoriser(etat: EtatVeille):
+    """Nœud 6 : enregistre les articles envoyés pour ne pas les renvoyer."""
+    enregistrer_envoi(etat["selection"])
     return {}
 
 
@@ -245,8 +262,8 @@ def construire_page(contenu_html, nb_articles):
 
 # ---------- Arête conditionnelle ----------
 
-def apres_collecte(etat: EtatVeille):
-    """S'il n'y a aucun article, on arrête le graphe."""
+def apres_filtre(etat: EtatVeille):
+    """S'il ne reste aucun article nouveau, on arrête le graphe."""
     if etat["articles"]:
         return "selectionner"
     return END
@@ -257,15 +274,19 @@ def apres_collecte(etat: EtatVeille):
 graphe = StateGraph(EtatVeille)
 
 graphe.add_node("collecter", collecter)
+graphe.add_node("filtrer", filtrer)
 graphe.add_node("selectionner", selectionner, retry_policy=RELANCE)
 graphe.add_node("rediger", rediger, retry_policy=RELANCE)
 graphe.add_node("envoyer", envoyer)
+graphe.add_node("memoriser", memoriser)
 
 graphe.add_edge(START, "collecter")
-graphe.add_conditional_edges("collecter", apres_collecte, ["selectionner", END])
+graphe.add_edge("collecter", "filtrer")
+graphe.add_conditional_edges("filtrer", apres_filtre, ["selectionner", END])
 graphe.add_edge("selectionner", "rediger")
 graphe.add_edge("rediger", "envoyer")
-graphe.add_edge("envoyer", END)
+graphe.add_edge("envoyer", "memoriser")
+graphe.add_edge("memoriser", END)
 
 agent = graphe.compile()
 
@@ -278,6 +299,6 @@ if __name__ == "__main__":
     resultat = agent.invoke({"articles": [], "selection": [], "mail_html": ""})
 
     if not resultat["mail_html"]:
-        print("Aucun article cette fois, pas de mail envoyé.")
+        print("Aucun nouvel article cette fois, pas de mail envoyé.")
     else:
-        print("Veille terminée et envoyée.")
+        print("Veille terminée, envoyée et mémorisée.")
