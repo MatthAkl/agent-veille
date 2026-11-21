@@ -40,5 +40,41 @@
     "titre": "Does the Action Matter? Probing Action-Conditioned Semantic Forecasting as a World Model for Autonomous Driving",
     "domaine": "Robotique / voiture autonome",
     "date_envoi": "2026-11-21"
+  },
+  {
+    "lien": "https://simonwillison.net/2026/Nov/20/token-fraud-is-here-and-its-bad/",
+    "titre": "Token fraud is here and it’s BAD (YouTube)",
+    "domaine": "Agents IA / LLM",
+    "date_envoi": "2026-11-21"
+  },
+  {
+    "lien": "https://huggingface.co/blog/RadixArk/daisyrose-27b-pushing-the-frontier-of-post-trainin",
+    "titre": "DaisyRose-27B: Pushing the Frontier of Post-Training Efficiency",
+    "domaine": "Agents IA / LLM",
+    "date_envoi": "2026-11-21"
+  },
+  {
+    "lien": "https://arxiv.org/abs/2611.26617v1",
+    "titre": "One Prior, Two Dynamics: Repurposing Video Diffusion Transformers for Self-Supervised Latent Action Learning",
+    "domaine": "Vision par ordinateur",
+    "date_envoi": "2026-11-21"
+  },
+  {
+    "lien": "https://arxiv.org/abs/2611.26615v1",
+    "titre": "ScaleWorld: High-Resolution World Generation through Shared Prediction and Refinement",
+    "domaine": "Vision par ordinateur",
+    "date_envoi": "2026-11-21"
+  },
+  {
+    "lien": "https://arxiv.org/abs/2611.25474v1",
+    "titre": "TuringPAI: A Foundation for On-Device Physical AI",
+    "domaine": "Robotique / voiture autonome",
+    "date_envoi": "2026-11-21"
+  },
+  {
+    "lien": "https://arxiv.org/abs/2611.24719v1",
+    "titre": "DRIFT: Detachable Reasoning for Runtime-Flexible and Efficient End-to-End Driving",
+    "domaine": "Robotique / voiture autonome",
+    "date_envoi": "2026-11-21"
   }
 ]
