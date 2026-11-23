@@ -34,13 +34,13 @@ graph LR
 
 - **LangGraph** : graphe à état partagé, arête conditionnelle (arrêt si aucun nouvel article).
 - **Mémoire** : historique des articles envoyés (`historique.json`), mis à jour automatiquement par le workflow pour éviter les doublons.
-- **Résilience** : bascule automatique entre 3 modèles Gemini (`with_fallbacks`) et relance des nœuds avec `RetryPolicy` en cas d'indisponibilité de l'API.
+- **Résilience** : bascule automatique entre 3 modèles Gemini puis vers Groq (gpt-oss-120b), un fournisseur indépendant (with_fallbacks), relance des nœuds avec RetryPolicy et jusqu’à 3 essais au niveau du workflow.
 - **Automatisation** : GitHub Actions, exécution le lundi et le jeudi matin, avec commit automatique de la mémoire.
 - **Sécurité** : clés API et identifiants stockés dans les secrets GitHub, jamais dans le code.
 
 ## Stack
 
-Python, LangGraph, LangChain, Gemini API, feedparser, GitHub Actions
+Python, LangGraph, LangChain, Gemini API, feedparser, GitHub Actions, Groq
 
 ## Lancer le projet en local
 
