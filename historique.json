@@ -76,5 +76,47 @@
     "titre": "DRIFT: Detachable Reasoning for Runtime-Flexible and Efficient End-to-End Driving",
     "domaine": "Robotique / voiture autonome",
     "date_envoi": "2026-11-21"
+  },
+  {
+    "lien": "https://www.dataengineeringweekly.com/p/data-engineering-weekly-297",
+    "titre": "Data Engineering Weekly #297",
+    "domaine": "Data engineering / BI",
+    "date_envoi": "2026-11-23"
+  },
+  {
+    "lien": "https://huggingface.co/blog/agentic-evals",
+    "titre": "How to build and maintain an agentic evaluation",
+    "domaine": "Agents IA / LLM",
+    "date_envoi": "2026-11-23"
+  },
+  {
+    "lien": "https://huggingface.co/blog/inkling2mini",
+    "titre": "Welcome Inkling 2 Mini, Cutting-edge Performance for your Local Setup",
+    "domaine": "Agents IA / LLM",
+    "date_envoi": "2026-11-23"
+  },
+  {
+    "lien": "https://arxiv.org/abs/2611.27915v1",
+    "titre": "StereoVLM: Binocular Vision-Language Models for Metric 3D Spatial Reasoning",
+    "domaine": "Vision par ordinateur",
+    "date_envoi": "2026-11-23"
+  },
+  {
+    "lien": "https://arxiv.org/abs/2611.27921v1",
+    "titre": "ESSI: Computationally Efficient Semantic Search for Sparse Autoencoder Concepts",
+    "domaine": "Vision par ordinateur",
+    "date_envoi": "2026-11-23"
+  },
+  {
+    "lien": "https://arxiv.org/abs/2611.27804v1",
+    "titre": "Generalist Action Critic: Harnessing Frontier Models in Autonomous Driving",
+    "domaine": "Robotique / voiture autonome",
+    "date_envoi": "2026-11-23"
+  },
+  {
+    "lien": "https://arxiv.org/abs/2611.27447v1",
+    "titre": "Mechanism Parity for Simulation-Based Validation of Autonomous-Driving Perception",
+    "domaine": "Robotique / voiture autonome",
+    "date_envoi": "2026-11-23"
   }
 ]
