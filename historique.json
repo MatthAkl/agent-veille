@@ -118,5 +118,41 @@
     "titre": "Mechanism Parity for Simulation-Based Validation of Autonomous-Driving Perception",
     "domaine": "Robotique / voiture autonome",
     "date_envoi": "2026-11-23"
+  },
+  {
+    "lien": "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
+    "titre": "Building on Nemotron 3.5 Parse: Open Data, Fine-Tuning, and Faster Inference",
+    "domaine": "Agents IA / LLM",
+    "date_envoi": "2026-11-26"
+  },
+  {
+    "lien": "https://huggingface.co/blog/training-swarms",
+    "titre": "Swarms, Flocks, Gangs: How to build, train, and evaluate multi-agent systems",
+    "domaine": "Agents IA / LLM",
+    "date_envoi": "2026-11-26"
+  },
+  {
+    "lien": "https://arxiv.org/abs/2611.34943v1",
+    "titre": "Tracking Any Point with Agentic Visual Reasoning",
+    "domaine": "Vision par ordinateur",
+    "date_envoi": "2026-11-26"
+  },
+  {
+    "lien": "https://arxiv.org/abs/2611.34941v1",
+    "titre": "Improving and Expanding Video Editing Capabilities Without Videos",
+    "domaine": "Vision par ordinateur",
+    "date_envoi": "2026-11-26"
+  },
+  {
+    "lien": "https://arxiv.org/abs/2611.34403v1",
+    "titre": "Recoverability policy editing for closed-loop safety in autonomous driving",
+    "domaine": "Robotique / voiture autonome",
+    "date_envoi": "2026-11-26"
+  },
+  {
+    "lien": "https://arxiv.org/abs/2611.33439v1",
+    "titre": "OnCue: Generating Safety-Critical Driving Scenarios under Occlusion with Temporal Control",
+    "domaine": "Robotique / voiture autonome",
+    "date_envoi": "2026-11-26"
   }
 ]
